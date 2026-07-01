@@ -35,7 +35,7 @@ const sendVerificationEmail = async (to, name, token) => {
         </p>
         <div style="text-align: center; margin: 32px 0;">
           <a href="${verifyUrl}" 
-             style="display: inline-block; padding: 14px 36px; background: #CC0000; color: white; 
+            style="display: inline-block; padding: 14px 36px; background: #CC0000; color: white; 
                     border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 16px;">
             Verificar mi cuenta
           </a>
