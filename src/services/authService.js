@@ -6,7 +6,7 @@ const { sendVerificationEmail } = require('../utils/email');
 
 const authService = {
   async register({ name, email, password }) {
-    // Verificar si el email ya existe
+
     const existing = await userRepository.findByEmail(email);
     if (existing) {
       const err = new Error('El email ya está registrado');
@@ -29,8 +29,8 @@ const authService = {
       verificationTokenExpires,
     });
 
-    // Enviar email de verificación
-    await sendVerificationEmail(email, name, verificationToken);
+    
+// await sendVerificationEmail(email, name, verificationToken);
 
     return { message: 'Registro exitoso. Revisá tu email para activar la cuenta.' };
   },
@@ -43,7 +43,6 @@ const authService = {
       throw err;
     }
 
-    // Marcar como verificado y limpiar el token
     await userRepository.updateById(user._id, {
       isVerified: true,
       verificationToken: null,

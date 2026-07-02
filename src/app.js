@@ -12,7 +12,7 @@ const app = express();
 
 connectDB();
 
-// Lista de orígenes permitidos
+
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',

@@ -2,12 +2,12 @@ const propertyRepository = require('../repositories/propertyRepository');
 const propertyTypeRepository = require('../repositories/propertyTypeRepository');
 
 const propertyService = {
-  // Listado público — cualquiera puede ver
+  
   async getAll(filters) {
     return propertyRepository.findAll(filters);
   },
 
-  // Solo las del usuario logueado
+  
   async getAllByUser(userId, filters) {
     return propertyRepository.findAllByUser(userId, filters);
   },
