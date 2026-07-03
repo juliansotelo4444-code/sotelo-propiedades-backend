@@ -3,8 +3,8 @@ const nodemailer = require('nodemailer');
 const createTransporter = () => {
   return nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
-    port: parseInt(process.env.EMAIL_PORT) || 587,
-    secure: false,
+    port: parseInt(process.env.EMAIL_PORT) || 465,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
@@ -21,12 +21,10 @@ const sendVerificationEmail = async (to, name, token) => {
 
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 0;">
-      <!-- Header rojo -->
       <div style="background: #CC0000; padding: 32px 40px; text-align: center;">
         <h1 style="color: white; margin: 0; font-size: 28px; letter-spacing: -0.5px;">SOTELO</h1>
         <p style="color: rgba(255,255,255,0.85); margin: 4px 0 0; font-size: 13px; letter-spacing: 4px;">PROPIEDADES</p>
       </div>
-      <!-- Contenido -->
       <div style="padding: 40px; background: #ffffff; border: 1px solid #eeeeee;">
         <h2 style="color: #111111; margin: 0 0 16px;">Hola, ${name}!</h2>
         <p style="color: #555555; line-height: 1.7; margin: 0 0 24px;">
@@ -45,7 +43,6 @@ const sendVerificationEmail = async (to, name, token) => {
           O copiá este link: <a href="${verifyUrl}" style="color: #CC0000;">${verifyUrl}</a>
         </p>
       </div>
-      <!-- Footer -->
       <div style="padding: 20px 40px; background: #f5f5f5; text-align: center;">
         <p style="color: #aaaaaa; font-size: 12px; margin: 0;">Sotelo Propiedades — Martillero Público</p>
       </div>
