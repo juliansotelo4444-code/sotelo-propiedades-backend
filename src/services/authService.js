@@ -30,7 +30,11 @@ const authService = {
     });
 
     
-// await sendVerificationEmail(email, name, verificationToken);
+try {
+  await sendVerificationEmail(email, name, verificationToken);
+} catch (emailError) {
+  console.error("Error al enviar el email de verificación:", emailError);
+}
 
     return { message: 'Registro exitoso. Revisá tu email para activar la cuenta.' };
   },
